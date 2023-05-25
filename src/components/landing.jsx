@@ -4,6 +4,8 @@ import { app, db, auth } from "./firebase";
 import "../styles/landing.css"
 
 function Landing () {
+    document.title =  "Escape Room Game - Panorama | ISTE Students' Chapter NIT Durgapur"
+
     // firebase configurations, do not change
     const [authState, setAuthState] = useState({
         isSignedIn: false,

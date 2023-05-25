@@ -1,9 +1,10 @@
-import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import Login from "./components/auth/login";
-import Signup from "./components/auth/signup";
-import Game from "./components/game";
-import NotFound from "./components/notfound";
-import Landing from "./components/landing";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom"
+import Login from "./components/auth/login"
+import Signup from "./components/auth/signup"
+import Game from "./components/game"
+import NotFound from "./components/notfound"
+import AlreadyCompleted from "./components/alreadycompleted"
+import Landing from "./components/landing"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/auth/signup" element={<Signup />} />
         <Route exact path="/game" element={<Game />} />
         <Route exact path="/404" element={<NotFound />} />
+        <Route exact path="/completed" element={<AlreadyCompleted />} />
         <Route exact path="*" element={<Navigate to="/404" />} />
         <Route exact path="/" element={<Landing />}></Route>
       </Routes>

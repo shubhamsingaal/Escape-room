@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/notfound.css";
 
 function NotFound() {
+  document.title =  "404 | Not Found"
   return (
     <div className="coverDiv">
       <div className="flexRow">

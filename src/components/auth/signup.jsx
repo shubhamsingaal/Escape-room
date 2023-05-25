@@ -3,6 +3,8 @@ import { app, db, auth } from '../firebase'
 import '../../styles/auth.css'
 
 function Login () {
+    document.title =  "Signup | Panorama"
+
     // firebase configurations, do not change
     const [authState, setAuthState] = useState({
         isSignedIn: false,

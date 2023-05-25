@@ -3,6 +3,8 @@ import { app, db, auth } from "./firebase"
 import "../styles/verification.css"
 
 function Verify (){
+    document.title =  "Verify Account"
+    
     // firebase configurations, do not change
     const [authState, setAuthState] = useState({
         isSignedIn: false,
