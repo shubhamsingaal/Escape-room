@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom"
-import Login from "./components/auth/login"
-import Signup from "./components/auth/signup"
+import Auth from "./components/auth"
 import Game from "./components/game"
 import NotFound from "./components/notfound"
 import AlreadyCompleted from "./components/alreadycompleted"
@@ -10,8 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/auth/login" element={<Login />} />
-        <Route exact path="/auth/signup" element={<Signup />} />
+        <Route exact path="/auth" element={<Auth />} />
         <Route exact path="/game" element={<Game />} />
         <Route exact path="/404" element={<NotFound />} />
         <Route exact path="/completed" element={<AlreadyCompleted />} />
