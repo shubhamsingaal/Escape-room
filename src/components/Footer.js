@@ -20,7 +20,7 @@ export const Footer = () => {
               <a href="https://www.facebook.com/istenitdgp/" target="blank"><img src={navIcon2} alt="" /></a>
               <a href="https://www.instagram.com/istenitdgp/?hl=en" target="blank"><img src={navIcon3} alt="" /></a>
             </div>
-            <p>Copyright 2022. All Rights Reserved</p>
+            <p>Copyright 2023. All Rights Reserved</p>
           </Col>
         </Row>
       </Container>
