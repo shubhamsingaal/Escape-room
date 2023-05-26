@@ -42,7 +42,7 @@ function Login () {
                 email: result.user.email,
                 photo: result.user.photoURL,
                 creationTime: result.user.metadata.creationTime,
-                lastSingInTime: result.user.metadata.lastSignInTime,
+                lastSignInTime: result.user.metadata.lastSignInTime,
               },
               { merge: true });
             navigate("/", {"replace": true})
