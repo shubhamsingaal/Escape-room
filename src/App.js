@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom"
+import Landing from "./components/landing"
 import Auth from "./components/auth"
 import Game from "./components/game"
 import NotFound from "./components/notfound"
 import AlreadyCompleted from "./components/alreadycompleted"
-import Landing from "./components/landing"
 
 function App() {
   return (

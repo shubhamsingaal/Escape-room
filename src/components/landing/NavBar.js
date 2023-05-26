@@ -52,10 +52,10 @@ export const NavBar = () => {
                 <a href="https://www.facebook.com/istenitdgp/" target="blank"><img src={navIcon2} alt="" /></a>
                 <a href="https://www.instagram.com/istenitdgp/?hl=en" target="blank"><img src={navIcon3} alt="" /></a>
               </div>
-              <HashLink to='#connect'>
+              <HashLink to='/auth'>
                 <button className="vvd">
                   <span>
-                    <Link className="loginLink" to="/auth">Login</Link>
+                    Login
                   </span>
                 </button>
               </HashLink>

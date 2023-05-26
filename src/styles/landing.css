@@ -720,12 +720,3 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
-
-.loginLink {
-  color: white !important;
-  text-decoration: none;
-}
-
-.loginLink:hover {
-  color: black !important;
-}

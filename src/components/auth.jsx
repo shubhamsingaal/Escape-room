@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react"
+import { React, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { app, db, auth } from "./firebase"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import '../styles/auth.css'
 
 function Login () {
@@ -19,12 +22,37 @@ function Login () {
       return () => unregisterAuthObserver()
     }, [])
 
-    const [phoneNumber, setPhoneNumber] = useState()
-    const [loginState, setLoginState] = useState(true)
+    const navigate = useNavigate()
+    const provider = new GoogleAuthProvider();
 
-    // handle submit phone number
-    function handleSubmitPhone(event) {
-        event.preventDefault();
+    // cannot read phone number because Google doesn't share it
+    // provider.addScope('https://www.googleapis.com/auth/user.phonenumbers.read');
+
+    function handleGoogleSignin(event) {
+        event.preventDefault()
+        event.target.setAttribute("disabled", "")
+        signInWithPopup(auth, provider)
+        .then(async (result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            console.log(user.email)
+            await setDoc(doc(db, "users", result.user.uid), {
+                name: result.user.displayName,
+                email: result.user.email,
+                photo: result.user.photoURL,
+                creationTime: result.user.metadata.creationTime,
+                lastSingInTime: result.user.metadata.lastSignInTime,
+              },
+              { merge: true });
+            navigate("/", {"replace": true})
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData?.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            console.log(errorCode, errorMessage, email, credential)
+        });
     }
 
     return (
@@ -35,28 +63,11 @@ function Login () {
         <div className="centered">
             <h1>Login to continue</h1>
             <div className="footnote">
-                Login with your phone number before playing.
+                Authenticate with your Google Account to continue
             </div>
-            <form onSubmit={(event) => event.preventDefault()}>
-                <input 
-                    style={{display:loginState?"flex":"none"}}
-                    type="text" placeholder="Name" />
-                <input 
-                    style={{display:loginState?"flex":"none"}}
-                    type="number" placeholder="Phone Number" />
                 <button 
-                    style={{display:loginState?"flex":"none"}}
-                    className="get-otp-button"> Get OTP </button>
-                <input 
-                    style={{display:loginState?"none":"flex"}}
-                    type="number" 
-                    maxLength="6" 
-                    className="OTP" 
-                    placeholder="Enter OTP" />
-                <button 
-                    style={{display:loginState?"none":"flex"}}
-                    className="submit-otp"> Submit OTP </button>
-            </form>
+                    onClick={handleGoogleSignin} 
+                    className="google-button"> Google </button>
         </div>
     </div>
     )

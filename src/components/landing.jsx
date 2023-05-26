@@ -2,13 +2,13 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { app, db, auth } from "./firebase";
 import "../styles/landing.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { NavBar } from "./landing/NavBar";
 import { Banner } from "./landing/Banner";
 import { Rules } from "./landing/Rules";
 import { About } from "./landing/About";
 import { Footer } from "./landing/Footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Landing () {
     document.title =  "Escape Room Game - Panorama | ISTE Students' Chapter NIT Durgapur"
