@@ -1,21 +1,22 @@
-import logo from '.';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar } from "./components/NavBar";
-import { Banner } from "./components/Banner";
-import { Rules } from "./components/Rules";
-import { About } from "./components/About";
-import { Footer } from "./components/Footer";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom"
+import Auth from "./components/auth"
+import Game from "./components/game"
+import NotFound from "./components/notfound"
+import AlreadyCompleted from "./components/alreadycompleted"
+import Landing from "./components/landing"
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Banner />
-      <Rules />
-      <About />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/auth" element={<Auth />} />
+        <Route exact path="/game" element={<Game />} />
+        <Route exact path="/404" element={<NotFound />} />
+        <Route exact path="/completed" element={<AlreadyCompleted />} />
+        <Route exact path="*" element={<Navigate to="/404" />} />
+        <Route exact path="/" element={<Landing />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
