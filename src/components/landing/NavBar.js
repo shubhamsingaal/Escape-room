@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from '../../assets/img/logo.svg';
 import navIcon1 from '../../assets/img/nav-icon1.svg';
@@ -42,8 +43,8 @@ export const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Rules</Nav.Link>
-              <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>About</Nav.Link>
+              <Nav.Link href="#rules" className={activeLink === 'rules' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('rules')}>Rules</Nav.Link>
+              <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
@@ -52,7 +53,11 @@ export const NavBar = () => {
                 <a href="https://www.instagram.com/istenitdgp/?hl=en" target="blank"><img src={navIcon3} alt="" /></a>
               </div>
               <HashLink to='#connect'>
-                <button className="vvd"><span>Login</span></button>
+                <button className="vvd">
+                  <span>
+                    <Link className="loginLink" to="/auth">Login</Link>
+                  </span>
+                </button>
               </HashLink>
             </span>
           </Navbar.Collapse>
