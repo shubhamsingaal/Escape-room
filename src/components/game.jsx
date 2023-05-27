@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { app, db, auth } from "./firebase"
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import "../styles/game.css"
 import { signOut } from "firebase/auth";
 
@@ -89,6 +89,18 @@ function Game(){
         else {
             alert("Incorrect. Oops!")
         }
+    }
+
+    // update the final score to database after game completion
+    async function updateFinalScore(final_score) {
+        await setDoc(doc(db, "leaderboard", `${authState.user?.uid}`), {
+            score: final_score,
+            name: authState.user?.displayName,
+            timestamp: new Date(),
+          },
+          { merge: true }).then((doc) => {
+            navigate("/completed", {"replace": true})
+          })
     }
 
     const optionsRendered = questionList[questionNumber]?.options.map((option_val) => {
