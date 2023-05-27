@@ -93,10 +93,21 @@ function Game(){
 
     // update the final score to database after game completion
     async function updateFinalScore(final_score) {
+        let ending_time = new Date()
+
+        // update to users db too
+        await setDoc(doc(db, "users", `${authState.user?.uid}`), {
+            score: final_score,
+            completedAt: ending_time,
+            userAgent: navigator.userAgent,
+        },
+        { merge: true})
+
+        // update to leaderboard
         await setDoc(doc(db, "leaderboard", `${authState.user?.uid}`), {
             score: final_score,
             name: authState.user?.displayName,
-            timestamp: new Date(),
+            timestamp: ending_time,
           },
           { merge: true }).then((doc) => {
             navigate("/completed", {"replace": true})
