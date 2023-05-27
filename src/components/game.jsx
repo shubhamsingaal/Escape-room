@@ -31,29 +31,31 @@ function Game(){
         pending: true,
         user: null,
     })
+
     useEffect(() => {
-      const unregisterAuthObserver = auth.onAuthStateChanged(user => 
+      const unregisterAuthObserver = auth.onAuthStateChanged((user)=> {
           setAuthState({ user, pending: false, isSignedIn: !!user })
+          updateDBwithUserDetails(user);
+        }
       )
       return () => unregisterAuthObserver()
     }, [])
 
-    // check if player has already played the game
-    useEffect(async () => {
-        const docRef = doc(db, `users`, `${authState.user.uid}`);
+    async function updateDBwithUserDetails(user){
+        const docRef = doc(db, `users`, `${user?.uid}`);
         const docSnap = await getDoc(docRef);
-        if(docSnap.exists()) {
-            navigate("/alreadycompleted", {replace: true})
+        if(docSnap.data()['startedAt']) {
+            navigate("/completed", {replace: true})
         }
-    }, [])
+        return;
+    }
 
     const navigate = useNavigate()
     // necessary condition checking if user is signed in or not
     if (authState.pending) {
         return (<h1> loading... </h1>)
     }
-
-    else if(authState.isSignedIn)
+    else if(!authState.isSignedIn)
         navigate('/', { replace: true });
 
     return (

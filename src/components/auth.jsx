@@ -21,8 +21,14 @@ function Login () {
       )
       return () => unregisterAuthObserver()
     }, [])
-
     const navigate = useNavigate()
+
+    if (authState.pending) {
+        return (<h1> loading... </h1>)
+    }
+    else if(authState.isSignedIn)
+        navigate('/game', { replace: true });
+    
     const provider = new GoogleAuthProvider();
 
     // cannot read phone number because Google doesn't share it
