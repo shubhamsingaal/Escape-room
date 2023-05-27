@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { app, db, auth } from "./firebase"
 import { doc, getDoc } from "firebase/firestore";
 import "../styles/game.css"
+import { signOut } from "firebase/auth";
+
+import GameImage  from '../assets/svgviewer-output.svg'
 
 class GameData {
     #startedAt = new Date()
@@ -50,17 +53,82 @@ function Game(){
         return;
     }
 
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // all hooks defined here
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     const navigate = useNavigate()
+    const [showQuestion, setShowQuestion] = useState(false)
+    const [responseValue, setResponseValue] = useState("")
+    const [questionNumber, setQuestionNumber] = useState(0)
+    const [questionList, setQuestionList] = useState([
+        {"question": "the first question", "options":["one", "two"], "solution":"something"}
+    ])
+
     // necessary condition checking if user is signed in or not
     if (authState.pending) {
         return (<h1> loading... </h1>)
     }
-    else if(!authState.isSignedIn)
+    else if(!authState.isSignedIn) {
         navigate('/', { replace: true });
+    }
+
+    function handleLogout() {
+        // handles logging out 
+        signOut(auth).then(()=>{
+            navigate.apply("/", {"replace": true})
+        })
+    }
+
+    function handleSubmitResponse() {
+        if(responseValue===questionList[questionNumber].solution) {
+            setResponseValue("")
+            setQuestionNumber((state) => state+1)
+            setShowQuestion(false)
+            alert("Correct!")
+        }
+        else {
+            alert("Incorrect. Oops!")
+        }
+    }
+
+    const optionsRendered = questionList[questionNumber]?.options.map((option_val) => {
+        return (<li>
+            {option_val}
+        </li>)
+        }
+    )
 
     return (
-        <div>
-            {/*  */}
+        <div className="container">
+            <nav className="topnav">
+                <div className="three-dot-btn">...</div>
+                <div className="heading"> Escape World Game </div>
+                <div className="logout" onClick={handleLogout}> Logout </div>
+            </nav>
+            <div className="game-area">
+                <div>
+                    <img src={GameImage} alt="gaming arena" />
+                    <span className="character" onClick={()=>setShowQuestion(true)}></span>
+                </div>
+                {showQuestion && 
+                <div className="question-space">
+                    <span className="question">
+                        {questionList[questionNumber]?.question}
+                    </span>
+                    <ul>
+                       {optionsRendered} 
+                    </ul>
+                    <input
+                        type="text" 
+                        placeholder="Enter answer" 
+                        value={responseValue}
+                        onChange={(event)=>setResponseValue(event.target.value)}
+                        onKeyDown={(event) => { if(event.key==='Enter') handleSubmitResponse() }}/>
+                    <button 
+                        className="close-button" 
+                        onClick={() => setShowQuestion(false)}> Close </button>
+                </div>}
+            </div>
         </div>
     )
 }
