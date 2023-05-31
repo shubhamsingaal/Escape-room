@@ -1,4 +1,179 @@
-.character {
+body,
+html {
+  height: 100%;
+}
+
+body {
+  /* The image used */
+  background-image: url("../assets/newsvg.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.topnav {
+  display: flex;
+
+}
+
+.heading {
+  font-size: 2rem;
+  margin: auto;
+  border-radius: 2px;
+  opacity: 0.7;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  box-shadow: 2px 2px 10px #ffffff;
+  font-family: monospace;
+  text-decoration: solid;
+  font-weight: bolder;
+}
+
+
+.logout {
+
+  font-size: 1.3rem;
+  margin: 3px 50px;
+  border: 0;
+  background-color: transparent;
+  padding: 5px;
+  box-shadow: 2px 2px 10px #ffffff;
+  border-radius: 10px;
+  font-family: monospace;
   position: absolute;
-  z-index: 2;
+  right: 0px;
+}
+
+
+.showLeft {
+  border: 0;
+  background-color: transparent;
+  padding: 5px;
+  box-shadow: 2px 2px 10px #ffffff;
+  border-radius: 10px;
+  font-family: monospace;
+  position: absolute;
+  right: 0px;
+
+}
+
+.icons li {
+  background: none repeat scroll 0 0 rgb(255, 251, 251);
+  height: 6px;
+  width: 7px;
+  line-height: 0;
+  list-style: none outside none;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+  vertical-align: top;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+
+.btn-left,
+.btn-right {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
+
+.dropbtn {
+  background-color: transparent;
+  position: fixed;
+  color: rgb(51, 0, 255);
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  right: 0.4em;
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  margin-top: 60px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+.show {
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+.heading {
+    font-size: 1.2rem;
+    margin: auto;
+    border-radius: 2px;
+    opacity: 0.7;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    box-shadow: 2px 2px 10px #ffffff;
+    font-family: cursive;
+    text-decoration: solid;
+    font-weight: bolder;
+  }
+
+    .logout {
+  
+      font-size: 0.9rem;
+      margin: 3px 50px;
+  
+      border: 0;
+      background-color: transparent;
+  
+  
+  
+      padding: 5px;
+      box-shadow: 2px 2px 10px #ffffff;
+      border-radius: 10px;
+      font-family: monospace;
+  
+  
+      position: absolute;
+      right: 0px;
+  
+  
+    }
+
+        .icons li {
+          background: none repeat scroll 0 0 rgb(255, 251, 251);
+          height: 4px;
+          width: 4px;
+          line-height: 0;
+          list-style: none outside none;
+          margin-left: 5px;
+          margin-right: 5px;
+          margin-top: 3px;
+          vertical-align: top;
+          border-radius: 50%;
+          pointer-events: none;
+        }
 }
