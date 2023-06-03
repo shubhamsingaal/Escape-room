@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { app, db, auth } from "./firebase"
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore"
 import "../styles/game.css"
-import { signOut } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth"
+import { Link } from "react-router-dom"
+import Leaderboard from "../components/leaderboard"
 
 import GameImage from '../assets/newsvg.png'
 
@@ -61,6 +62,8 @@ function Game() {
     const [showQuestion, setShowQuestion] = useState(false)
     const [responseValue, setResponseValue] = useState("")
     const [questionNumber, setQuestionNumber] = useState(0)
+    const [showDropDown, setShowDropDown] = useState(false)
+    const [showLeaderboard, setShowLeaderboard] = useState(false)
     const [questionList, setQuestionList] = useState([
         { "question": "the first question", "options": ["one", "two"], "solution": "something" }
     ])
@@ -122,27 +125,27 @@ function Game() {
     }
     )
 
-
-    
-
     return (
         <div className="container">
-            <nav className="topnav">
+            <div className="leaderboard" style={{display:showLeaderboard?"flex":"none"}}> 
+                {/* <Leaderboard /> */}
+            </div>
 
+            <nav className="topnav">
                 <div className="dropdown">
-                    <ul className="dropbtn icons btn-right showLeft" onclick="showDropdown()">
+                    <ul className="dropbtn icons btn-right showLeft" onClick={() => setShowDropDown((state) => !state)}>
                         <li></li>
                         <li></li>
                         <li></li>
                     </ul>
-                    <div id="myDropdown" className="dropdown-content">
-                        <Link to="/leaderboard">LeaderBoard</Link>
-                        <div className="logout" onClick={handleLogout}> Logout </div>
+                    <div id="myDropdown" style={{display:showDropDown?"block":"none"}} className="dropdown-content">
+                        <Link to="#" onClick={() => setShowLeaderboard(true)}>LeaderBoard</Link>
+                        <Link to="#" onClick={handleLogout}> Logout </Link>
                     </div>
                 </div>
                 <div className="heading"> Escape Room </div>
-                
             </nav>
+
             <div className="game-area">
                 {/* <div>
                     <img src={GameImage} alt="gaming arena" />
