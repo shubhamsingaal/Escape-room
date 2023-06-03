@@ -4,9 +4,6 @@ html {
 }
 
 body {
-  /* The image used */
-  background-image: url("../assets/newsvg.png");
-
   /* Full height */
   height: 100%;
 
@@ -18,6 +15,7 @@ body {
 
 .topnav {
   display: flex;
+  z-index: 2;
 }
 
 .heading {
@@ -31,7 +29,8 @@ body {
   font-family: monospace;
   text-decoration: solid;
   font-weight: bolder;
-  background: rgb(221, 221, 221, 0.6);
+  background: rgb(221, 221, 221, 0.8);
+  z-index: 2;
 }
 
 .showLeft {
@@ -79,6 +78,36 @@ body {
   position: absolute;
   display: inline-block;
   right: 0.4em;
+  z-index: 2;
+}
+
+.game-area {
+  /* background-image: url("../assets/newsvg.png"); */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+}
+
+.gameimg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.character {
+  position: absolute;
+  max-height: 70px;
+  z-index: 2;
+  width: auto;
+  bottom: 46px;
+  left: 200px;
 }
 
 .dropdown-content {

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 import Leaderboard from "../components/leaderboard"
 
 import GameImage from '../assets/newsvg.png'
+import  CharacterImage from '../assets/image-removebg-preview.png'
 
 class GameData {
     #startedAt = new Date()
@@ -147,10 +148,10 @@ function Game() {
             </nav>
 
             <div className="game-area">
-                {/* <div>
-                    <img src={GameImage} alt="gaming arena" />
-                    <span className="character" onClick={()=>setShowQuestion(true)}></span>
-                </div>  */}
+                <div>
+                    <img src={GameImage} className="gameimg" alt="gaming arena" />
+                    <img src={CharacterImage} className="character" onClick={()=>setShowQuestion(true)} />
+                </div> 
                 {showQuestion &&
                     <div className="question-space">
                         <span className="question">
