@@ -128,6 +128,7 @@ function Game() {
 
     return (
         <div className="container">
+            <div className="overlay" style={{display:showQuestion?"block":"none"}} onClick={()=> setShowQuestion(false)}></div>
             <div className="leaderboard" style={{display:showLeaderboard?"flex":"none"}}> 
                 {/* <Leaderboard /> */}
             </div>
@@ -153,10 +154,11 @@ function Game() {
                     <img src={CharacterImage} className="character" onClick={()=>setShowQuestion(true)} />
                 </div> 
                 {showQuestion &&
-                    <div className="question-space">
+                    <div className="question-space">                        
                         <span className="question">
                             {questionList[questionNumber]?.question}
                         </span>
+
                         <ul>
                             {optionsRendered}
                         </ul>
@@ -164,10 +166,11 @@ function Game() {
                             type="text"
                             placeholder="Enter answer"
                             value={responseValue}
+                            className="form-control"
                             onChange={(event) => setResponseValue(event.target.value)}
                             onKeyDown={(event) => { if (event.key === 'Enter') handleSubmitResponse() }} />
                         <button
-                            className="close-button"
+                            className="close-button btn btn-primary"
                             onClick={() => setShowQuestion(false)}> Close </button>
                     </div>}
             </div>

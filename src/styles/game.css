@@ -101,6 +101,19 @@ body {
   margin-right: auto;
 }
 
+.question-space {
+  position: absolute;
+  z-index: 4;
+  background: white;
+  padding: 2em;
+  top: 20%;
+  left: 30%;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  color: black;
+}
+
 .character {
   position: absolute;
   max-height: 70px;
@@ -108,6 +121,18 @@ body {
   width: auto;
   bottom: 46px;
   left: 200px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 3;
 }
 
 .dropdown-content {
