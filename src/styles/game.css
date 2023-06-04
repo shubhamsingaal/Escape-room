@@ -101,6 +101,7 @@ body {
   margin-right: auto;
 }
 
+
 .question-space {
   position: absolute;
   z-index: 4;
@@ -114,13 +115,85 @@ body {
   color: black;
 }
 
-.character {
+.character1 {
   position: absolute;
-  max-height: 70px;
+  max-height: 64px;
   z-index: 2;
   width: auto;
-  bottom: 46px;
-  left: 200px;
+  bottom: 106px;
+  left: 239px;
+  cursor: pointer;
+}
+.character2 {
+  position: absolute;
+  max-height: 64px;
+  z-index: 2;
+  width: auto;
+  bottom: 157px;
+  left: 339px;
+  cursor: pointer;
+}
+.character3 {
+  position: absolute;
+  max-height: 64px;
+  z-index: 2;
+  width: auto;
+  bottom: 235px;
+  left: 419px;
+  cursor: pointer;
+}
+.character4 {
+  position: absolute;
+  max-height: 64px;
+  z-index: 2;
+  width: auto;
+  bottom: 285px;
+  left: 557px;
+  cursor: pointer;
+}
+.character5 {
+  position: absolute;
+  max-height: 64px;
+  z-index: 2;
+  width: auto;
+  top: 204px;
+  left: 632px;
+  cursor: pointer;
+}
+.character6 {
+  position: absolute;
+  max-height: 64px;
+  z-index: 2;
+  width: auto;
+  top: 151px;
+  left: 546px;
+  cursor: pointer;
+}
+.character7 {
+  position: absolute;
+  max-height: 64px;
+  z-index: 2;
+  width: auto;
+  top: 155px;
+  left: 389px;
+  cursor: pointer;
+}
+.character8 {
+  position: absolute;
+  max-height: 61px;
+  z-index: 2;
+  width: auto;
+  top: 148px;
+  left: 269px;
+  cursor: pointer;
+}
+.character9 {
+  position: absolute;
+  max-height: 60px;
+  z-index: 2;
+  width: auto;
+  top: 43px;
+  left: 240px;
   cursor: pointer;
 }
 

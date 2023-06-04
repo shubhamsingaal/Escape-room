@@ -160,8 +160,19 @@ function Game() {
                 <div>
                     <GameImage
                         className="gameimg" alt="gaming arena" />
-                    <img src={CharacterImage} ref={characterRef} className="character" onClick={() => setShowQuestion(true)} />
+                   
+                    <img src={CharacterImage} ref={characterRef} className="character1" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character2" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character3" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character4" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character5" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character6" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character7" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character8" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character9" onClick={() => setShowQuestion(true)} />
                 </div>
+              
+                
                 {showQuestion &&
                     <div className="question-space">
                         <span className="question">
