@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 import Leaderboard from "../components/leaderboard"
 
 import GameImage from './game_image'
-import  CharacterImage from '../assets/image-removebg-preview.png'
+import CharacterImage from '../assets/image-removebg-preview.png'
 
 class GameData {
     #startedAt = new Date()
@@ -66,38 +66,14 @@ function Game() {
     const [showDropDown, setShowDropDown] = useState(false)
     const [showLeaderboard, setShowLeaderboard] = useState(false)
     const characterRef = useRef()
-    const e1 = useRef()
-    const e2 = useRef()
-    const e3 = useRef()
-    const e4 = useRef()
-    const e5 = useRef()
-    const e6 = useRef()
-    const e7 = useRef()
-    const e8 = useRef()
-    const e9 = useRef()
     const [questionList, setQuestionList] = useState([
         { "question": "the first question", "options": ["one", "two"], "solution": "something" }
     ])
 
     const coordinates = new Array(9)
 
-    useEffect(()=> {
-        coordinates[0] = [e1.current?.getBoundingClientRect().x, e1.current?.getBoundingClientRect().y]
-        coordinates[1] = [e2.current?.getBoundingClientRect().x, e2.current?.getBoundingClientRect().y]
-        coordinates[2] = [e3.current?.getBoundingClientRect().x, e3.current?.getBoundingClientRect().y]
-        coordinates[3] = [e4.current?.getBoundingClientRect().x, e4.current?.getBoundingClientRect().y]
-        coordinates[4] = [e5.current?.getBoundingClientRect().x, e5.current?.getBoundingClientRect().y]
-        coordinates[5] = [e6.current?.getBoundingClientRect().x, e6.current?.getBoundingClientRect().y]
-        coordinates[6] = [e7.current?.getBoundingClientRect().x, e7.current?.getBoundingClientRect().y]
-        coordinates[7] = [e8.current?.getBoundingClientRect().x, e8.current?.getBoundingClientRect().y]
-        coordinates[8] = [e9.current?.getBoundingClientRect().x, e9.current?.getBoundingClientRect().y]
-        console.log(coordinates)
-        console.log(e1.current)
-    }, [questionNumber])
-
-
-    useEffect(()=> {
-        if(!characterRef.current) return;
+    useEffect(() => {
+        if (!characterRef.current) return;
         characterRef.current.style.bottom = `${coordinates[questionNumber][0]}px`
         characterRef.current.style.left = `${coordinates[questionNumber][1]}px`
     }, [questionNumber])
@@ -160,8 +136,8 @@ function Game() {
 
     return (
         <div className="container">
-            <div className="overlay" style={{display:showQuestion?"block":"none"}} onClick={()=> setShowQuestion(false)}></div>
-            <div className="leaderboard" style={{display:showLeaderboard?"flex":"none"}}> 
+            <div className="overlay" style={{ display: showQuestion ? "block" : "none" }} onClick={() => setShowQuestion(false)}></div>
+            <div className="leaderboard" style={{ display: showLeaderboard ? "flex" : "none" }}>
                 {/* <Leaderboard /> */}
             </div>
 
@@ -172,7 +148,7 @@ function Game() {
                         <li></li>
                         <li></li>
                     </ul>
-                    <div id="myDropdown" style={{display:showDropDown?"block":"none"}} className="dropdown-content">
+                    <div id="myDropdown" style={{ display: showDropDown ? "block" : "none" }} className="dropdown-content">
                         <Link to="#" onClick={() => setShowLeaderboard(true)}>LeaderBoard</Link>
                         <Link to="#" onClick={handleLogout}> Logout </Link>
                     </div>
@@ -182,13 +158,12 @@ function Game() {
 
             <div className="game-area">
                 <div>
-                    <GameImage 
-                        props={[e1, e2, e3, e4, e5, e6, e7, e8, e9]}
-                    className="gameimg" alt="gaming arena" />
-                    <img src={CharacterImage} ref={characterRef} className="character" onClick={()=>setShowQuestion(true)} />
-                </div> 
+                    <GameImage
+                        className="gameimg" alt="gaming arena" />
+                    <img src={CharacterImage} ref={characterRef} className="character" onClick={() => setShowQuestion(true)} />
+                </div>
                 {showQuestion &&
-                    <div className="question-space">                        
+                    <div className="question-space">
                         <span className="question">
                             {questionList[questionNumber]?.question}
                         </span>
