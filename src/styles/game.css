@@ -120,8 +120,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  bottom: 106px;
-  left: 239px;
+  top: 444px;
+  left: 245px;
   cursor: pointer;
 }
 .character2 {
@@ -129,7 +129,7 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  bottom: 157px;
+  top: 395px;
   left: 339px;
   cursor: pointer;
 }
@@ -138,7 +138,7 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  bottom: 235px;
+  top: 317px;
   left: 419px;
   cursor: pointer;
 }
@@ -147,7 +147,7 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  bottom: 285px;
+  top: 268px;
   left: 557px;
   cursor: pointer;
 }
