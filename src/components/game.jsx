@@ -67,17 +67,23 @@ function Game() {
     const [showLeaderboard, setShowLeaderboard] = useState(false)
     const characterRef = useRef()
     const [questionList, setQuestionList] = useState([
-        { "question": "the first question", "options": ["one", "two"], "solution": "something" }
+        { "question": "the first question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the second question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the third question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the fourth question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the fifth question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the sixth question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the seventh question", "options": ["one", "two"], "solution": "something" },
+        { "question": "the eighth question", "options": ["one", "two"], "solution": "something" },
+        { "question": "You won!", "options": ["one", "two"], "solution": "something" },
     ])
 
-    const coordinates = new Array(9)
-
     useEffect(() => {
-        if (!characterRef.current) return;
-        characterRef.current.style.bottom = `${coordinates[questionNumber][0]}px`
-        characterRef.current.style.left = `${coordinates[questionNumber][1]}px`
+        if(questionNumber==8) {
+            alert('You won. Congratulations!')
+            navigate('/completed', {'replace': true})
+        }
     }, [questionNumber])
-
     // necessary condition checking if user is signed in or not
     if (authState.pending) {
         return (<h1> loading... </h1>)
@@ -161,15 +167,15 @@ function Game() {
                     <GameImage
                         className="gameimg" alt="gaming arena" />
                    
-                    <img src={CharacterImage} ref={characterRef} className="character1" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character2" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character3" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character4" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character5" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character6" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character7" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character8" onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character9" onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character1" style={{display:questionNumber===0?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character2" style={{display:questionNumber===1?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character3" style={{display:questionNumber===2?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character4" style={{display:questionNumber===3?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character5" style={{display:questionNumber===4?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character6" style={{display:questionNumber===5?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character7" style={{display:questionNumber===6?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character8" style={{display:questionNumber===7?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={CharacterImage} ref={characterRef} className="character9" style={{display:questionNumber===8?'block':'none'}} onClick={() => setShowQuestion(true)} />
                 </div>
               
                 
