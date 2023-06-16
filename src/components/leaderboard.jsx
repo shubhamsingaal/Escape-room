@@ -36,7 +36,7 @@ function Leaderboard () {
 
     return (<>
         <h3> Leaderboard </h3>
-        <button onClick={handleFetchLeaderboard}> Refresh </button>
+        <button className="rounded-button" onClick={handleFetchLeaderboard}> Refresh </button>
         <table>
             <thead>
                 <th>Name</th>

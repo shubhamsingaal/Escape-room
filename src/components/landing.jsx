@@ -9,6 +9,7 @@ import { Rules } from "./landing/Rules";
 import { About } from "./landing/About";
 import { Footer } from "./landing/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from "../assets/img/logo.svg"
 
 function Landing () {
     document.title =  "Escape Room Game - Panorama | ISTE Students' Chapter NIT Durgapur"
@@ -30,7 +31,7 @@ function Landing () {
     const navigate = useNavigate()
     // necessary condition checking if user is signed in or not
     if (authState.pending) {
-        return (<h1> loading... </h1>)
+        return (<img src={logo} alt="Logo" style={{height:20, marginTop:250}}/>)
     }
     else if(authState.isSignedIn) 
         navigate('/game', { replace: true });

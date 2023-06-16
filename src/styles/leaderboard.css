@@ -2,10 +2,76 @@
   position: absolute;
   top: 20%;
   left: 30%;
-  width: max-content;
+  border-radius: 15px;
+    box-shadow: 2px 2px 10px #ffffff;
+
+    font-family: 'Ubuntu', sans-serif;
   z-index: 10;
-  background-color: white;
+  background-color: rgb(169, 164, 164);
   padding: 3em 4em 3em 4em;
   color: black;
   flex-direction: column;
+  width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+h3{
+  text-align: center;
+  padding: 15px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #888383;
+}
+
+@media (max-width: 768px) {
+
+  th,
+  td {
+    padding: 4px;
+    font-size: 14px;
+  }
+}
+
+/* Button.css */
+
+.rounded-button {
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rounded-button:hover {
+  background-color: #e0e0e0;
+}
+
+.rounded-button:focus {
+  outline: none;
+}
+
+.rounded-button:active {
+  background-color: #c0c0c0;
 }
