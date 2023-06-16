@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { app, db, auth } from "./firebase"
+import { db, auth } from "./firebase"
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import "../styles/game.css"
 import { signOut } from "firebase/auth"
@@ -129,9 +129,9 @@ function Game() {
             name: authState.user?.displayName,
             timestamp: ending_time,
         },
-            { merge: true }).then((doc) => {
-                navigate("/completed", { "replace": true })
-            })
+        { merge: true }).then((doc) => {
+            navigate("/completed", { "replace": true })
+        })
     }
 
     const optionsRendered = questionList[questionNumber]?.options.map((option_val) => {
@@ -142,9 +142,9 @@ function Game() {
 
     return (
         <div className="container">
-            <div className="overlay" style={{ display: showQuestion ? "block" : "none" }} onClick={() => setShowQuestion(false)}></div>
+            <div className="overlay" style={{ display: showQuestion || showLeaderboard ? "block" : "none" }} onClick={() => {setShowQuestion(false); setShowLeaderboard(false)}}></div>
             <div className="leaderboard" style={{ display: showLeaderboard ? "flex" : "none" }}>
-                {/* <Leaderboard /> */}
+                <Leaderboard />
             </div>
 
             <nav className="topnav">
@@ -156,8 +156,8 @@ function Game() {
                         <li></li>
                     </ul>
                     <div id="myDropdown" style={{ display: showDropDown ? "block" : "none" }} className="dropdown-content">
-                        <Link to="#" onClick={() => setShowLeaderboard(true)}>LeaderBoard</Link>
-                        <Link to="#" onClick={handleLogout}> Logout </Link>
+                        <Link to="#" onClick={() => {setShowDropDown(false); setShowLeaderboard(true)}}>LeaderBoard</Link>
+                        <Link to="#" onClick={(e) => {setShowDropDown(false); handleLogout(e)}}> Logout </Link>
                     </div>
                 </div>
             </nav>
@@ -168,15 +168,15 @@ function Game() {
                         className="gameimg" width={"100%"} alt="gaming arena" />
                    {forceRender|(!forceRender) &&
                     <>
-                        <img src={CharacterImage} className="character1" style={{display:questionNumber===0?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+191}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character2" style={{display:questionNumber===1?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+304}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character3" style={{display:questionNumber===2?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+410}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character4" style={{display:questionNumber===3?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+575}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character5" style={{display:questionNumber===4?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+666}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character6" style={{display:questionNumber===5?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+554}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character7" style={{display:questionNumber===6?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+377}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+227}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+240}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character1" style={{display:questionNumber===0?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+191}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character2" style={{display:questionNumber===1?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+288}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character3" style={{display:questionNumber===2?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+382}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character4" style={{display:questionNumber===3?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+545}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character5" style={{display:questionNumber===4?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+626}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character6" style={{display:questionNumber===5?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+520}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character7" style={{display:questionNumber===6?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+347}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+200}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+210}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                     </>
                     }
                 </div>

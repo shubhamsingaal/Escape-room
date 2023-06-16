@@ -3,4 +3,9 @@
   top: 20%;
   left: 30%;
   width: max-content;
+  z-index: 10;
+  background-color: white;
+  padding: 3em 4em 3em 4em;
+  color: black;
+  flex-direction: column;
 }

@@ -4,57 +4,50 @@ import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
 import  "../styles/leaderboard.css"
 
 function Leaderboard () {
-    // firebase configurations, do not change
-    const [authState, setAuthState] = useState({
-        isSignedIn: false,
-        pending: true,
-        user: null,
-    })
-    
-    useEffect(() => {
-      const unregisterAuthObserver = auth.onAuthStateChanged(user => {
-        handleFetchLeaderboard()
-        setAuthState({ user, pending: false, isSignedIn: !!user })
-      })
-      return () => unregisterAuthObserver()
-    }, [])
-
-    const [leaderboardData, setLeaderboardData] = useState({})
+    const [leaderboardData, setLeaderboardData] = useState([])
 
     // fetch data for leaderboard: only top 10 records
     async function handleFetchLeaderboard() {
         const lbRef = collection(db, "leaderboard");
         const q = query(lbRef, orderBy("score", "desc"), orderBy("timestamp"), limit(10));
         const querySnapshot = await getDocs(q);
-
-        let newLBData = {}
-
+        
+        let newLBData = []
         querySnapshot.forEach((doc) => {
-            newLBData[doc.id] = [doc.data().name, doc.data().score]
+            console.log(doc.data())
+            newLBData.push({'name':doc.data().name,'score':doc.data().score})
           });
 
         setLeaderboardData(newLBData)
     }
 
-    const leaderboardRendered = leaderboardData.keys?.map((key) => {
+    const leaderboardRendered = leaderboardData.map((data) => {
         return (
-            <li className="scorelist">
-                <span className="name">
-                    {leaderboardRendered[key][0]}
-                </span>
-                <span className="score">
-                    {leaderboardRendered[key][1]}
-                </span>
-            </li>
+            <tr className="scorelist">
+                <td className="name">
+                    {data.name}
+                </td>
+                <td className="score">
+                    {data.score}
+                </td>
+            </tr>
         )
     })
 
-    return <div>
-        <ul className="leaderboard">
-            {leaderboardRendered}
-        </ul>
+    return (<>
+        <h3> Leaderboard </h3>
         <button onClick={handleFetchLeaderboard}> Refresh </button>
-    </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Score</th>
+            </thead>
+            <tbody>
+                {leaderboardRendered}
+            </tbody>
+        </table>
+        
+    </>)
 }
 
 export default Leaderboard;
