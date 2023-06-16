@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
- import 'animate.css';
+import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Banner = () => {
@@ -55,9 +55,11 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to Escape Room</span>
+                <span className="tagline">Welcome to Adventure Alcove</span>
                 <h1>{`Time to escape `} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "The Limits", "The sourroundings", "The World" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Escape room puzzles include word games, numbers, and "arranging things into patterns" such as substitution cyphers, riddles, crosswords, Sudoku, word search.</p>
+                  <p>
+                    Embark on a thrilling odyssey through levels of adventure, where the right answers hold the power to unlock the hidden treasure, outsmart your rivals, and claim victory with a touch of brilliance.
+                  </p>
                   <button onClick={() => console.log('connect')}>Journey to Escape <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>

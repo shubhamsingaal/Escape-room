@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-import { app, db, auth } from "./firebase";
+import { auth } from "./firebase";
 import "../styles/landing.css"
 
 import { NavBar } from "./landing/NavBar";
@@ -35,8 +35,6 @@ function Landing () {
     else if(authState.isSignedIn) 
         navigate('/game', { replace: true });
 
-    // TODO: write rest of the logic (useState, useEffect, ...)
-    // below. Write all frontend matter below
     return (
         <div>
             <NavBar />

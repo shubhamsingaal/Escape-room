@@ -50,12 +50,24 @@ export const  About = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>About</h2>
-                  <p>Escape room is one  of the panaroma event. In panaroma we conduct seven events namely <br /><br />
-                    <span> 1. Art and Photography</span><br />
-                    <span>2. Escape Room</span><br />
-                    <span>3. Coding</span><br />
-                    <span>4. Crossword and puzzle</span><br />
+                <h2>Other Highlights</h2>
+                  <p>
+                    Get your boots on, wear your hat and be ready for the ultimate spirit-captivating adventure but wait! There's more thrill awaiting you. Panorama 2023 is a host of other events including:
+                    <br /><br />
+                    <span>1. Enigma</span>
+                    <br />
+                    <span>2. Speakers Event</span>
+                    <br />
+                    <span>3. The Dreamers' Canvas</span>
+                    <br />
+                    <span>4. Acrostic</span>
+                    <br />
+                    <span>5. Adventure Alcove</span>
+                    <br />
+                    <span>6. Space Odyssey</span>
+                    <br />
+                    <span>7. Code Sprint</span>
+                    <br />
                     
                 
                   </p>

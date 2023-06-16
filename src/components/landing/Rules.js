@@ -32,14 +32,31 @@ export const Rules = () => {
                 <div className="col-12">
                     <div className="skill-bx wow zoomIn">
                         <h2>Rules</h2>
-                        <p>You need to follow the given rules<br></br> if your want to win prizes</p>
+                        <p>Rules, regulations and general guidelines:</p>
                         <hr />
 
-              
-               <span>1. You are not locked in. If you need to leave at any time, you can come out the door you came in.</span> <hr />
-              <span>2. All phones need to be left outside the room on the table. Coats and purses can be as well.</span> <hr />
-              <span>3. You have 60 minutes to escape. We will take a picture, win or lose, and share it on our social media pages.</span> <hr />
-              <span>4. What you hear or see, leave here; do not share any puzzles, hints or clues. Share the fun, but don’t spoil the fun for others!</span> <hr />  
+                        
+                        <span>
+                          1. Participants must follow our official pages at [insta],[fb],[linkedin]
+                        </span> <hr />
+                        <span>
+                          2. All participants must adhere to sportsman spirit, and not indulge in any unfair means to win the adventure.
+                        </span> <hr />
+                        <span>
+                          3. Cyber-based attacks such as DDoS, Script Injection and breaking into the servers are prohibited.
+                        </span> <hr />
+                        <span>
+                          4. Do not press F12 or open Developer Tools during the game, it will lead to disqualification, and the game will end then and there.
+                        </span> <hr />  
+                        <span>
+                          5. Only one participation per person is allowed. Using multiple accounts to play the game is a violation of these terms.
+                        </span> <hr />
+                        <span>
+                          6. All decisions made by judges will be final and binding.
+                        </span> <hr />
+                        <span>
+                          7. Tip: Keep your curiosity up always and do not use ChatGPT :)
+                        </span> <hr />  
                    
                     </div>
 

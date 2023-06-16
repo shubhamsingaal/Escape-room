@@ -54,9 +54,7 @@ export const NavBar = () => {
               </div>
               <HashLink to='/auth'>
                 <button className="vvd">
-                  <span>
                     Login
-                  </span>
                 </button>
               </HashLink>
             </span>
