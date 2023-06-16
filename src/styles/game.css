@@ -2,22 +2,20 @@ body,
 html {
   height: 100%;
 }
-
 body {
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .topnav {
+  position: absolute;
   display: flex;
+  flex-direction: row;
   z-index: 2;
+  width: 80%;
+  justify-content: space-between;
 }
-
 .heading {
   font-size: 2rem;
   margin: auto;
@@ -43,7 +41,6 @@ body {
   position: absolute;
   right: 0px;
 }
-
 .icons li {
   background: none repeat scroll 0 0 rgb(255, 251, 251);
   height: 6px;
@@ -67,7 +64,6 @@ body {
 
 .dropbtn {
   background-color: transparent;
-  position: fixed;
   color: rgb(51, 0, 255);
   font-size: 16px;
   border: none;
@@ -75,53 +71,43 @@ body {
 }
 
 .dropdown {
-  position: absolute;
-  display: inline-block;
-  right: 0.4em;
   z-index: 2;
 }
 
 .game-area {
-  /* background-image: url("../assets/newsvg.png"); */
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: 100vh;
   width: 100%;
   background-position: center;
+  overflow-y: clip;
 }
 
 .gameimg {
   position: absolute;
-  width: 100%;
+  width: unset;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-
 .question-space {
-  position: absolute;
+  position: fixed;
   z-index: 4;
   background: white;
   padding: 2em;
-  top: 20%;
+  top: 10%;
   left: 30%;
   display: flex;
   gap: 1em;
   flex-direction: column;
   color: black;
 }
-
 .character1 {
   position: absolute;
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 444px;
-  left: 245px;
+  top: 82.8%;
+  left: 191px;
   cursor: pointer;
 }
 .character2 {
@@ -129,8 +115,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 395px;
-  left: 339px;
+  top: 73%;
+  left: 304px;
   cursor: pointer;
 }
 .character3 {
@@ -138,8 +124,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 317px;
-  left: 419px;
+  top: 59%;
+  left: 410px;
   cursor: pointer;
 }
 .character4 {
@@ -147,8 +133,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 268px;
-  left: 557px;
+  top: 50%;
+  left: 575px;
   cursor: pointer;
 }
 .character5 {
@@ -156,8 +142,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 204px;
-  left: 632px;
+  top: 39%;
+  left: 666px;
   cursor: pointer;
 }
 .character6 {
@@ -165,8 +151,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 151px;
-  left: 546px;
+  top: 29%;
+  left: 554px;
   cursor: pointer;
 }
 .character7 {
@@ -174,8 +160,8 @@ body {
   max-height: 64px;
   z-index: 2;
   width: auto;
-  top: 155px;
-  left: 389px;
+  top: 30%;
+  left: 377px;
   cursor: pointer;
 }
 .character8 {
@@ -183,8 +169,8 @@ body {
   max-height: 61px;
   z-index: 2;
   width: auto;
-  top: 148px;
-  left: 269px;
+  top: 28%;
+  left: 227px;
   cursor: pointer;
 }
 .character9 {
@@ -196,9 +182,8 @@ body {
   left: 240px;
   cursor: pointer;
 }
-
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -207,10 +192,9 @@ body {
   opacity: 0.7;
   z-index: 3;
 }
-
 .dropdown-content {
   display: none;
-  position: relative;
+  position: absolute;
   margin-top: 60px;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -219,7 +203,6 @@ body {
   z-index: 1;
   height: max-content;
 }
-
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -230,7 +213,6 @@ body {
 .dropdown a:hover {
   background-color: #f1f1f1;
 }
-
 .show {
   display: block;
 }

@@ -7,7 +7,7 @@ import { signOut } from "firebase/auth"
 import { Link } from "react-router-dom"
 import Leaderboard from "../components/leaderboard"
 
-import GameImage from './game_image'
+import GameImage from '../assets/newsvg.png'
 import CharacterImage from '../assets/image-removebg-preview.png'
 
 class GameData {
@@ -42,8 +42,7 @@ function Game() {
         const unregisterAuthObserver = auth.onAuthStateChanged((user) => {
             setAuthState({ user, pending: false, isSignedIn: !!user })
             updateDBwithUserDetails(user);
-        }
-        )
+        })
         return () => unregisterAuthObserver()
     }, [])
 
@@ -65,7 +64,8 @@ function Game() {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [showDropDown, setShowDropDown] = useState(false)
     const [showLeaderboard, setShowLeaderboard] = useState(false)
-    const characterRef = useRef()
+    const [forceRender, setForceRender] = useState(false)
+    const gameRef = useRef()
     const [questionList, setQuestionList] = useState([
         { "question": "the first question", "options": ["one", "two"], "solution": "something" },
         { "question": "the second question", "options": ["one", "two"], "solution": "something" },
@@ -148,6 +148,7 @@ function Game() {
             </div>
 
             <nav className="topnav">
+                <div className="heading"> Escape Room </div>
                 <div className="dropdown">
                     <ul className="dropbtn icons btn-right showLeft" onClick={() => setShowDropDown((state) => !state)}>
                         <li></li>
@@ -159,23 +160,25 @@ function Game() {
                         <Link to="#" onClick={handleLogout}> Logout </Link>
                     </div>
                 </div>
-                <div className="heading"> Escape Room </div>
             </nav>
 
-            <div className="game-area">
+            <div className="game-area" ref={gameRef}>
                 <div>
-                    <GameImage
-                        className="gameimg" alt="gaming arena" />
-                   
-                    <img src={CharacterImage} ref={characterRef} className="character1" style={{display:questionNumber===0?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character2" style={{display:questionNumber===1?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character3" style={{display:questionNumber===2?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character4" style={{display:questionNumber===3?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character5" style={{display:questionNumber===4?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character6" style={{display:questionNumber===5?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character7" style={{display:questionNumber===6?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character8" style={{display:questionNumber===7?'block':'none'}} onClick={() => setShowQuestion(true)} />
-                    <img src={CharacterImage} ref={characterRef} className="character9" style={{display:questionNumber===8?'block':'none'}} onClick={() => setShowQuestion(true)} />
+                    <img src={GameImage}
+                        className="gameimg" width={"100%"} alt="gaming arena" />
+                   {forceRender|(!forceRender) &&
+                    <>
+                        <img src={CharacterImage} className="character1" style={{display:questionNumber===0?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+191}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character2" style={{display:questionNumber===1?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+304}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character3" style={{display:questionNumber===2?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+410}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character4" style={{display:questionNumber===3?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+575}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character5" style={{display:questionNumber===4?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+666}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character6" style={{display:questionNumber===5?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+554}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character7" style={{display:questionNumber===6?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+377}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+227}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                        <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x+240}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    </>
+                    }
                 </div>
               
                 
