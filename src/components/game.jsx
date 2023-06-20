@@ -64,7 +64,8 @@ function Game() {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [showDropDown, setShowDropDown] = useState(false)
     const [showLeaderboard, setShowLeaderboard] = useState(false)
-    const [forceRender, setForceRender] = useState(false)
+    const [answerNumber, setAnswerNumber] = useState(1)
+    const [score, setScore] = useState(0)
     const gameRef = useRef()
     const [questionList, setQuestionList] = useState([
         { "question": "the first question", "options": ["one", "two"], "solution": "something" },
@@ -79,11 +80,13 @@ function Game() {
     ])
 
     useEffect(() => {
-        if(questionNumber==8) {
+        if(questionNumber===8) {
+            updateFinalScore(score)
             alert('You won. Congratulations!')
             navigate('/completed', {'replace': true})
         }
     }, [questionNumber])
+
     // necessary condition checking if user is signed in or not
     if (authState.pending) {
         return (<h1> loading... </h1>)
@@ -100,15 +103,24 @@ function Game() {
     }
 
     function handleSubmitResponse() {
+        
         if (responseValue === questionList[questionNumber].solution) {
-            setResponseValue("")
+            // perform the chores first
             setQuestionNumber((state) => state + 1)
             setShowQuestion(false)
+
+            // any feedback
             alert("Correct!")
+
+            // update score and reset try val
+            setScore((score) => score+(questionNumber<=6?10:20)/answerNumber)
+            setAnswerNumber(1)
         }
         else {
-            alert("Incorrect. Oops!")
+            setAnswerNumber((state) => state+1)
+            alert(`Incorrect. Oops! ${answerNumber+1}`)
         }
+        setResponseValue("")
     }
 
     // update the final score to database after game completion
@@ -166,8 +178,6 @@ function Game() {
                 <div>
                     <img src={GameImage}
                         className="gameimg" width={"100%"} alt="gaming arena" />
-                   {forceRender|(!forceRender) &&
-                    <>
                         <img src={CharacterImage} className="character1" style={{display:questionNumber===0?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+191}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                         <img src={CharacterImage} className="character2" style={{display:questionNumber===1?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+288}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                         <img src={CharacterImage} className="character3" style={{display:questionNumber===2?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+382}px`}} onClick={() => setShowQuestion(true)} alt="character" />
@@ -177,8 +187,6 @@ function Game() {
                         <img src={CharacterImage} className="character7" style={{display:questionNumber===6?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+347}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                         <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+200}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                         <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+210}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                    </>
-                    }
                 </div>
               
                 

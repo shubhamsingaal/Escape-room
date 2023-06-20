@@ -4,6 +4,7 @@ import Auth from "./components/auth"
 import Game from "./components/game"
 import NotFound from "./components/notfound"
 import AlreadyCompleted from "./components/alreadycompleted"
+import './App.css'
 
 function App() {
   return (

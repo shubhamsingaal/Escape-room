@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { app, db, auth } from "./firebase"
+import { db } from "./firebase"
 import { query, orderBy, limit, collection, getDocs } from "firebase/firestore";
 import  "../styles/leaderboard.css"
 
@@ -7,6 +7,9 @@ function Leaderboard () {
     const [leaderboardData, setLeaderboardData] = useState([])
 
     // fetch data for leaderboard: only top 10 records
+    useEffect(() => {
+        handleFetchLeaderboard()
+    }, [])
     async function handleFetchLeaderboard() {
         const lbRef = collection(db, "leaderboard");
         const q = query(lbRef, orderBy("score", "desc"), orderBy("timestamp"), limit(10));
