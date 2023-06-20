@@ -4,7 +4,9 @@ import Auth from "./components/auth"
 import Game from "./components/game"
 import NotFound from "./components/notfound"
 import AlreadyCompleted from "./components/alreadycompleted"
+import Leaderboard from "./components/leaderboard"
 import './App.css'
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Route exact path="/auth" element={<Auth />} />
         <Route exact path="/game" element={<Game />} />
         <Route exact path="/404" element={<NotFound />} />
+        <Route exact path="/leaderboard" element={<Leaderboard />} />
         <Route exact path="/completed" element={<AlreadyCompleted />} />
         <Route exact path="*" element={<Navigate to="/404" />} />
         <Route exact path="/" element={<Landing />}></Route>

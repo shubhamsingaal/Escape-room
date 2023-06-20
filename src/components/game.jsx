@@ -90,6 +90,7 @@ function Game() {
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     // all hooks defined here
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    const [starting_time, setStarting_time] = useState(new Date())
     const [showQuestion, setShowQuestion] = useState(false)
     const [responseValue, setResponseValue] = useState("")
     const [questionNumber, setQuestionNumber] = useState(0)
@@ -182,7 +183,7 @@ function Game() {
         await setDoc(doc(db, "leaderboard", `${authState.user?.uid}`), {
             score: final_score,
             name: authState.user?.displayName,
-            timestamp: ending_time,
+            timestamp: ending_time-starting_time,
         },
         { merge: true }).then((doc) => {
             navigate("/completed", { "replace": true })
