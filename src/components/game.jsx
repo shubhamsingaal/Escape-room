@@ -31,6 +31,38 @@ class GameData {
 }
 
 function Game() {
+
+    const navigate = useNavigate()
+    // terminate game on moving out of the window
+    // eg switching tabs, etc
+    useEffect(() => {
+        const unregisterMouseObserver = function () {
+            document.addEventListener("mouseout", (e) => handleTerminateGame(e))
+            printMagicOnConsole()
+        }
+        return () => unregisterMouseObserver()
+    }, [])
+
+    const printMagicOnConsole = () => {
+        // write some interesting thing on the console
+        // do not touch the pattern, it is like that only
+        console.clear()
+        console.log(`
+        ==========================================
+        =  ______   _____   _______     _____    =
+        =    |     /           |       |         =
+        =    |     \\____       |       |___      =
+        =    |          \\      |       |         =
+        =  __|___  _____/      |       |_____    =
+        ==========================================
+        Opening DevTools on this Game is not allowed!
+        Each activity is logged, and you are disqualified.
+        Good luck for the next Event!
+
+        (c) Team ISTE Students' Chapter NIT Durgapur, 2023
+        `)
+    }
+
     // firebase configurations, do not change
     const [authState, setAuthState] = useState({
         isSignedIn: false,
@@ -58,7 +90,6 @@ function Game() {
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     // all hooks defined here
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    const navigate = useNavigate()
     const [showQuestion, setShowQuestion] = useState(false)
     const [responseValue, setResponseValue] = useState("")
     const [questionNumber, setQuestionNumber] = useState(0)
@@ -103,7 +134,6 @@ function Game() {
     }
 
     function handleSubmitResponse() {
-        
         if (responseValue === questionList[questionNumber].solution) {
             // perform the chores first
             setQuestionNumber((state) => state + 1)
@@ -121,6 +151,19 @@ function Game() {
             alert(`Incorrect. Oops! ${answerNumber+1}`)
         }
         setResponseValue("")
+    }
+
+    function handleTerminateGame(e) {
+        e = e ? e : window.event;
+        var from = e.relatedTarget || e.toElement;
+        if (!from || from.nodeName == "HTML") {
+            // stop your drag event here
+            // for now we can just use an alert
+            console.log('Unfair activity observed! Game aborted')
+            setScore(0, updateFinalScore)
+            document.removeEventListener("mouseout", handleTerminateGame)
+            navigate("/completed", {'replace': true})
+        }
     }
 
     // update the final score to database after game completion
