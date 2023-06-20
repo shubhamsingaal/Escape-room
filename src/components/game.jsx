@@ -71,9 +71,13 @@ function Game() {
     })
 
     useEffect(() => {
-        const unregisterAuthObserver = auth.onAuthStateChanged((user) => {
+        const unregisterAuthObserver = auth.onAuthStateChanged(async (user) => {
             setAuthState({ user, pending: false, isSignedIn: !!user })
             updateDBwithUserDetails(user);
+            const docSnap = await getDoc(doc(db, 'leaderboard', `${user.uid}`))
+            if(docSnap.exists()) {
+                navigate("/completed", {'replace': true})
+            }
         })
         return () => unregisterAuthObserver()
     }, [])
@@ -222,15 +226,15 @@ function Game() {
                 <div>
                     <img src={GameImage}
                         className="gameimg" width={"100%"} alt="gaming arena" />
-                        <img src={CharacterImage} className="character1" style={{display:questionNumber===0?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+191}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character2" style={{display:questionNumber===1?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+288}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character3" style={{display:questionNumber===2?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+382}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character4" style={{display:questionNumber===3?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+545}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character5" style={{display:questionNumber===4?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+626}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character6" style={{display:questionNumber===5?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+520}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character7" style={{display:questionNumber===6?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+347}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+200}px`}} onClick={() => setShowQuestion(true)} alt="character" />
-                        <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+210}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character1" style={{display:questionNumber===0?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+191}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character2" style={{display:questionNumber===1?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+288}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character3" style={{display:questionNumber===2?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+382}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character4" style={{display:questionNumber===3?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+545}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character5" style={{display:questionNumber===4?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+626}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character6" style={{display:questionNumber===5?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+520}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character7" style={{display:questionNumber===6?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+347}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+200}px`}} onClick={() => setShowQuestion(true)} alt="character" />
+                    <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+210}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                 </div>
               
                 
