@@ -73,7 +73,6 @@ function Game() {
     useEffect(() => {
         const unregisterAuthObserver = auth.onAuthStateChanged(async (user) => {
             setAuthState({ user, pending: false, isSignedIn: !!user })
-            updateDBwithUserDetails(user);
             const docSnap = await getDoc(doc(db, 'leaderboard', `${user.uid}`))
             if(docSnap.exists()) {
                 navigate("/completed", {'replace': true})
@@ -81,15 +80,6 @@ function Game() {
         })
         return () => unregisterAuthObserver()
     }, [])
-
-    async function updateDBwithUserDetails(user) {
-        const docRef = doc(db, `users`, `${user?.uid}`);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.data()['startedAt']) {
-            navigate("/completed", { replace: true })
-        }
-        return;
-    }
 
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     // all hooks defined here
@@ -147,8 +137,11 @@ function Game() {
             // any feedback
             alert("Correct!")
 
+            let newScore = score+(questionNumber<=6?10:20)/answerNumber
+            updateScore(newScore)
+
             // update score and reset try val
-            setScore((score) => score+(questionNumber<=6?10:20)/answerNumber)
+            setScore((score) => newScore)
             setAnswerNumber(1)
         }
         else {
@@ -169,6 +162,27 @@ function Game() {
             document.removeEventListener("mouseout", handleTerminateGame)
             navigate("/completed", {'replace': true})
         }
+    }
+
+    // update each level's score
+    async function updateScore(final_score) {
+        let ending_time = new Date()
+
+        // update to users db too
+        await setDoc(doc(db, "users", `${authState.user?.uid}`), {
+            score: final_score,
+            completedAt: ending_time,
+            userAgent: navigator.userAgent,
+        },
+            { merge: true })
+
+        // update to leaderboard
+        await setDoc(doc(db, "leaderboard", `${authState.user?.uid}`), {
+            score: final_score,
+            name: authState.user?.displayName,
+            timestamp: ending_time-starting_time,
+        },
+        { merge: true })
     }
 
     // update the final score to database after game completion
