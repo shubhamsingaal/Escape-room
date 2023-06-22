@@ -10,26 +10,6 @@ import Leaderboard from "../components/leaderboard"
 import GameImage from '../assets/newsvg.png'
 import CharacterImage from '../assets/image-removebg-preview.png'
 
-class GameData {
-    #startedAt = new Date()
-    #phoneNumber = 0
-    #score = 0
-    // GameData class: all data must be updated using this class
-    constructor(startedAt, phoneNumber, score, completedAt, userAgent) {
-        this.#startedAt = startedAt
-        this.#phoneNumber = phoneNumber
-        this.#score = score
-        this.completedAt = completedAt
-        this.userAgent = userAgent
-    }
-    update_score(score) {
-        this.#score = score
-    }
-    get_score() {
-        return this.#score
-    }
-}
-
 function Game() {
 
     const navigate = useNavigate()
@@ -41,6 +21,7 @@ function Game() {
             printMagicOnConsole()
         }
         return () => unregisterMouseObserver()
+        // eslint-disable-next-line
     }, [])
 
     const printMagicOnConsole = () => {
@@ -79,12 +60,13 @@ function Game() {
             }
         })
         return () => unregisterAuthObserver()
+        // eslint-disable-next-line
     }, [])
 
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     // all hooks defined here
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    const [starting_time, setStarting_time] = useState(new Date())
+    const [starting_time, ] = useState(new Date())
     const [showQuestion, setShowQuestion] = useState(false)
     const [responseValue, setResponseValue] = useState("")
     const [questionNumber, setQuestionNumber] = useState(0)
@@ -93,7 +75,7 @@ function Game() {
     const [answerNumber, setAnswerNumber] = useState(1)
     const [score, setScore] = useState(0)
     const gameRef = useRef()
-    const [questionList, setQuestionList] = useState([
+    const [questionList, ] = useState([
         { "question": "the first question", "options": ["one", "two"], "solution": "something" },
         { "question": "the second question", "options": ["one", "two"], "solution": "something" },
         { "question": "the third question", "options": ["one", "two"], "solution": "something" },
@@ -111,6 +93,7 @@ function Game() {
             alert('You won. Congratulations!')
             navigate('/completed', {'replace': true})
         }
+        // eslint-disable-next-line
     }, [questionNumber])
 
     // necessary condition checking if user is signed in or not
@@ -154,7 +137,7 @@ function Game() {
     function handleTerminateGame(e) {
         e = e ? e : window.event;
         var from = e.relatedTarget || e.toElement;
-        if (!from || from.nodeName == "HTML") {
+        if (!from || from.nodeName === "HTML") {
             // stop your drag event here
             // for now we can just use an alert
             console.log('Unfair activity observed! Game aborted')
@@ -250,7 +233,6 @@ function Game() {
                     <img src={CharacterImage} className="character8" style={{display:questionNumber===7?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+200}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                     <img src={CharacterImage} className="character9" style={{display:questionNumber===8?'block':'none', left:`${gameRef.current?.getBoundingClientRect().x/2+210}px`}} onClick={() => setShowQuestion(true)} alt="character" />
                 </div>
-              
                 
                 {showQuestion &&
                     <div className="question-space">

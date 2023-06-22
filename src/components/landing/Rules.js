@@ -5,6 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import colorSharp from "../../assets/img/color-sharp.png"
 
 export const Rules = () => {
+  // eslint-disable-next-line
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -33,9 +34,7 @@ export const Rules = () => {
                     <div className="skill-bx wow zoomIn">
                         <h2>Rules</h2>
                         <p>Rules, regulations and general guidelines:</p>
-                        <hr />
-
-                        
+                        <hr />                        
                         <span>
                           1. Participants must follow our official pages at [insta],[fb],[linkedin]
                         </span> <hr />
@@ -63,7 +62,7 @@ export const Rules = () => {
                 </div>
             </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+        <img className="background-image-left" src={colorSharp} alt="something" />
     </section>
   )
 }

@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { app, db, auth } from "./firebase"
+import { db, auth } from "./firebase"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import '../styles/auth.css'
@@ -40,6 +40,7 @@ function Login () {
         signInWithPopup(auth, provider)
         .then(async (result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
+            // eslint-disable-next-line
             const token = credential.accessToken;
             const user = result.user;
             console.log(user.email)
