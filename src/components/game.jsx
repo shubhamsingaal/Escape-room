@@ -58,6 +58,7 @@ function Game() {
             if(docSnap.exists()) {
                 navigate("/completed", {'replace': true})
             }
+            
         })
         return () => unregisterAuthObserver()
         // eslint-disable-next-line

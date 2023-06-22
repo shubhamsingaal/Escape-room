@@ -34,7 +34,7 @@ function Landing () {
         return (<img src={logo} alt="Logo" style={{height:20, marginTop:250}}/>)
     }
     else if(authState.isSignedIn) 
-        navigate('/game', { replace: true });
+        navigate('/game', { replace: false });
 
     return (
         <div>
