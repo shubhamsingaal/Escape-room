@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from '../../assets/img/logo.svg';
 import navIcon1 from '../../assets/img/nav-icon1.svg';
@@ -48,9 +47,9 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-                <a href="https://www.linkedin.com/company/istenitdgp/mycompany/" target="blank"><img src={navIcon1} alt="" /></a>
-                <a href="https://www.facebook.com/istenitdgp/" target="blank"><img src={navIcon2} alt="" /></a>
-                <a href="https://www.instagram.com/istenitdgp/?hl=en" target="blank"><img src={navIcon3} alt="" /></a>
+                <a href="https://www.linkedin.com/company/istenitdgp/mycompany/" target="blank"><img src={navIcon1} alt="something" /></a>
+                <a href="https://www.facebook.com/istenitdgp/" target="blank"><img src={navIcon2} alt="something" /></a>
+                <a href="https://www.instagram.com/istenitdgp/?hl=en" target="blank"><img src={navIcon3} alt="something" /></a>
               </div>
               <HashLink to='/auth'>
                 <button className="vvd">
