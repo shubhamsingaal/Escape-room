@@ -56,7 +56,7 @@ function Game() {
             setAuthState({ user, pending: false, isSignedIn: !!user })
             const docSnap = await getDoc(doc(db, 'leaderboard', `${user.uid}`))
             if(docSnap.exists()) {
-                navigate("/completed", {'replace': true})
+                navigate("/completed")
             }
             
         })
