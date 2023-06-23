@@ -15,14 +15,6 @@ function Game() {
     const navigate = useNavigate()
     // terminate game on moving out of the window
     // eg switching tabs, etc
-    useEffect(() => {
-        const unregisterMouseObserver = function () {
-            document.addEventListener("mouseout", (e) => handleTerminateGame(e))
-            printMagicOnConsole()
-        }
-        return () => unregisterMouseObserver()
-        // eslint-disable-next-line
-    }, [starting_time])
 
     const printMagicOnConsole = () => {
         // write some interesting thing on the console
@@ -55,6 +47,10 @@ function Game() {
         const unregisterAuthObserver = auth.onAuthStateChanged(async (user) => {
             setAuthState({ user, pending: false, isSignedIn: !!user })
             const docSnap = await getDoc(doc(db, 'leaderboard', `${user.uid}`))
+            
+            document.addEventListener("mouseout", (e) => handleTerminateGame(e))
+            printMagicOnConsole()
+
             if(docSnap.exists()) {
                 navigate("/completed")
             }
