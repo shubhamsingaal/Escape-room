@@ -22,7 +22,7 @@ function Game() {
         }
         return () => unregisterMouseObserver()
         // eslint-disable-next-line
-    }, [document])
+    }, [starting_time])
 
     const printMagicOnConsole = () => {
         // write some interesting thing on the console
