@@ -65,7 +65,7 @@ a:hover {
 }
 
 img {
-  width: 100%;
+  width: 138px;
   height: auto;
 }
 
@@ -637,7 +637,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Footer Css ************/
 .footer {
-  padding: 145px 0 10px 0;
+  padding: 28px 0 10px 0;
   background-image: url("../assets/img/footer-bg.png");
   background-position: center center;
   background-size: cover;
@@ -712,7 +712,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .footer img {
-  width: 26%;
+  width: 38%;
+  height: auto;
 }
 
 .footer p {

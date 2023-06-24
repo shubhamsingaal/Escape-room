@@ -9,7 +9,7 @@ import { Rules } from "./landing/Rules";
 import { About } from "./landing/About";
 import { Footer } from "./landing/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from "../assets/img/logo.svg"
+import logo from "../assets/img/logo.png"
 
 function Landing () {
     document.title =  "Escape Room Game - Panorama | ISTE Students' Chapter NIT Durgapur"
