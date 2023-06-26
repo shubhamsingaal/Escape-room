@@ -96,11 +96,17 @@ body {
   background: white;
   padding: 2em;
   top: 10%;
-  left: 30%;
+  left: auto;
+  right: auto;
+  max-width: 700px;
   display: flex;
   gap: 1em;
   flex-direction: column;
   color: black;
+}
+.question {
+  max-height: 300px;
+  overflow-y: scroll;
 }
 .character1 {
   position: absolute;
