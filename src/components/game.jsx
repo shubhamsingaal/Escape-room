@@ -49,6 +49,11 @@ function Game() {
 
     useEffect(() => {
         const unregisterAuthObserver = auth.onAuthStateChanged(async (user) => {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(navigator.userAgent)) {
+                alert("This game is not supported on mobile. Please log in to a laptop or PC.")
+                navigate("/completed")
+            }
+
             setAuthState({ user, pending: false, isSignedIn: !!user })
             const docSnap = await getDoc(doc(db, 'leaderboard', `${user.uid}`))
             

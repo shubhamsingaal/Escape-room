@@ -1,5 +1,3 @@
-
-
 import 'react-multi-carousel/lib/styles.css';
 
 import colorSharp from "../../assets/img/color-sharp.png"
@@ -56,7 +54,18 @@ export const Rules = () => {
                         <span>
                           7. Tip: Keep your curiosity up always and do not use ChatGPT :)
                         </span> <hr />  
-                   
+                        <span>
+                          8. Best played on Laptop/PC. This game is not optimized for small screen devices.
+                        </span> <hr />
+                        <span>
+                          9. Click on the character to view question. Answer the question, and press enter to submit.
+                        </span> <hr /> 
+                        <span>
+                          10. Each incorrect attempt will lead to lesser score on correct answer, there is no negative marking in the game.
+                        </span> <hr /> 
+                        <span>
+                          11. You can only play this game once. If you answer any questions, then complete it in one shift. You can re-attempt if you couldn't answer a single question.
+                        </span> <hr /> 
                     </div>
 
                 </div>
