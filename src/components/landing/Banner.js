@@ -4,6 +4,7 @@ import headerImg from "../../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import { useNavigate } from "react-router-dom";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -14,6 +15,7 @@ export const Banner = () => {
   const [index, setIndex] = useState(1);
   const toRotate = [ "The Limits", "The surrounding", "The world" ];
   const period = 2000;
+  const navigate = useNavigate()
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -62,7 +64,7 @@ export const Banner = () => {
                   <p>
                     Embark on a thrilling odyssey through levels of adventure, where the right answers hold the power to unlock the hidden treasure, outsmart your rivals, and claim victory with a touch of brilliance.
                   </p>
-                  <button onClick={() => console.log('connect')}>Journey to Escape <ArrowRightCircle size={25} /></button>
+                  <button onClick={() => navigate('/auth')}>Journey to Escape <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>
           </Col>

@@ -241,7 +241,7 @@ d. ZZVRRNMMLKH
     }
 
     function handleSubmitResponse() {
-        if (responseValue === 'questionList[questionNumber].solution') {
+        if (responseValue === questionList[questionNumber].solution) {
             // perform the chores first
             let randomNew = 2;
             while(doneQuestions.has(randomNew)){
@@ -266,7 +266,7 @@ d. ZZVRRNMMLKH
         }
         else {
             setAnswerNumber((state) => state+1)
-            alert(`Incorrect. Oops! ${answerNumber+1}`)
+            alert(`Incorrect. Oops! Attempt Number ${answerNumber}`)
         }
         setResponseValue("")
     }
