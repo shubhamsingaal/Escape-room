@@ -64,7 +64,7 @@ export const Banner = () => {
                   <p>
                     Embark on a thrilling odyssey through levels of adventure, where the right answers hold the power to unlock the hidden treasure, outsmart your rivals, and claim victory with a touch of brilliance.
                   </p>
-                  <button onClick={() => navigate('/auth')}>Journey to Escape <ArrowRightCircle size={25} /></button>
+                  <a href="#rules" style={{}}>Journey to Escape <ArrowRightCircle size={25} /></a>
               </div>}
             </TrackVisibility>
           </Col>

@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import 'react-multi-carousel/lib/styles.css';
 
 import colorSharp from "../../assets/img/color-sharp.png"
 
 export const Rules = () => {
+  const navigate = useNavigate()
   // eslint-disable-next-line
   const responsive = {
     superLargeDesktop: {
@@ -67,7 +69,11 @@ export const Rules = () => {
                           11. You can only play this game once. If you answer any questions, then complete it in one shift. You can re-attempt if you couldn't answer a single question.
                         </span> <hr /> 
                     </div>
-
+                    <center>
+                      <button onClick={()=>navigate("/auth")} className="btn btn-primary text-center">
+                        Play Game
+                      </button>
+                    </center>
                 </div>
             </div>
         </div>

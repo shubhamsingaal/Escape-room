@@ -60,6 +60,10 @@ ul {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -69,7 +73,8 @@ img {
   height: auto;
 }
 
-button {
+button,
+a {
   border: 0;
   background-color: transparent;
 }
@@ -97,7 +102,6 @@ p.danger {
 
 /************ Navbar Css ************/
 nav.navbar {
-  
   padding: 18px 0;
   position: fixed;
   width: 100%;
@@ -314,7 +318,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 96%;
 }
 
-.banner button {
+.banner button,
+.banner a {
   color: #fff;
   font-weight: 700;
   font-size: 20px;
@@ -322,16 +327,22 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
-.banner button svg {
+.banner a:hover {
+  color: white;
+}
+.banner button svg,
+.banner a svg {
   font-size: 25px;
   margin-left: 10px;
   transition: 0.3s ease-in-out;
   line-height: 1;
 }
 
-.banner button:hover svg {
+.banner button:hover svg,
+.banner a:hover svg {
   margin-left: 25px;
 }
 
