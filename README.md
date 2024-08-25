@@ -11,3 +11,4 @@
 - All the notes and instructions concerning the deployment, setup and running of the application are under [`notes/`](./notes/) directory.
 - This application has CD (continuous deployment) setup with Vercel on both `preview` and `production` environments.
 - Technologies: ReactJS (using `create-react-app` template), GitHub Actions, Vercel
+# Escape-room
